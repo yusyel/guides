@@ -20,7 +20,7 @@ Sign up form should like this:
 
 After filling the form you need verify account with Credit or debit card. For credit card I've created <i>virtual credit</i> card and didn't have any issue for that. So I suggest to you same.
 
-Free Azure trial account offers: $200 credit to use in your first 30 days. Popular services free for 12 months. 
+**Free Azure trial account**  offers: **$200** credit to use in your first **30 days**. Popular services free for 12 months. 
 
 [These](https://portal.azure.com/#blade/Microsoft_Azure_Billing/FreeServicesBlade) are free service you can check out for limits.
 
@@ -81,7 +81,7 @@ You can download [this](https://aka.ms/installazurecliwindows) MSI downloader. O
 
 You can also use Windows Terminal which is azure-cli built in. You can download [here](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)
 
-## 4. Log in Azure-cli
+## 3. Log in Azure-cli
 
 if you have successfully installed the azure-cli tool:
 
@@ -95,9 +95,9 @@ az login
 Azure-cli will ask you to log-in your microsoft account in your default browser.
 
 
-## 5. Azure-cli Commands
+## 4. Azure-cli Commands
 
-### 5.1 Resource Group
+### 4.1 Resource Group
 
 Resource group is a container that holds related resources for an Azure service. Like docker container registry, web applications and many azure services.
 
@@ -123,14 +123,14 @@ az account list-locations | Select-String "name"
 Output should be similar like above.Output should be similar like above.
 
 
-### 5.1.1 Creating Resource Group
+### 4.1.1 Creating Resource Group
 
 ```
 az group create --name zoomcamp --location westeurope
 ```
 
 
-### 5.2.1 Creating Container registries
+### 4.2.1 Creating Container registries
 
 Azure Container Registry allows you to build, store, and manage docker container images in a private registry for all types of container deployments. 
 
@@ -138,6 +138,5 @@ Azure Container Registry allows you to build, store, and manage docker container
 ```bash
 az acr create --resource-group zoomcamp --name zoomcampacr --sku Basic
 ```
-After ```--name ``` tag you should choose unique for docker container registry name. We're going to use login information for docker container repository.
-
+After ```--name ``` tag you **should choose unique** for docker container registry **name.** We're going to use login information for docker container repository when we push local docker container to azure docker container repository.
 

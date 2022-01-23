@@ -94,6 +94,11 @@ az login
 
 Azure-cli will ask you to log-in your microsoft account in your default browser.
 
+```bash
+az account show
+```
+This command will show you the account information if you have successfully logged in.
+
 
 ## 4. Azure-cli Commands
 
@@ -112,7 +117,7 @@ This bash command lists all locations. You can choose which locations nearest yo
 
 The ```name``` line should be locations input variable.
 
-For example **East US 2**  input name should be ```centralus```
+For example: **East US 2**  input name should be ```centralus```
 
 
 
@@ -126,7 +131,7 @@ Output should be similar like above.Output should be similar like above.
 ### 4.1.1 Creating Resource Group
 
 ```
-az group create --name zoomcamp --location westeurope
+az group create --name {group_name} --location westeurope
 ```
 
 
@@ -136,7 +141,17 @@ Azure Container Registry allows you to build, store, and manage docker container
 
 
 ```bash
-az acr create --resource-group zoomcamp --name zoomcampacr --sku Basic
+az acr create --resource-group {group_name} --name {container_name} --sku Basic
 ```
 After ```--name ``` tag you **should choose unique** for docker container registry **name.** We're going to use login information for docker container repository when we push local docker container to azure docker container repository.
+
+## 5. Login Azure container registry
+
+If you have successfully created the container it's time to log in to the azure docker repository.
+
+There is two to log in repository. I will try cover both.
+
+
+
+
 

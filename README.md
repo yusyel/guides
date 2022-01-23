@@ -20,7 +20,7 @@ Sign up form should like this:
 
 After filling the form you need verify account with Credit or debit card. For credit card I've created <i>virtual credit</i> card and didn't have any issue for that. So I suggest to you same.
 
-**Free Azure trial account**  offers: **$200** credit to use in your first **30 days**. Popular services free for 12 months. 
+**Free Azure trial account**  offers: **$200** credit to use in your first **30 days**.
 
 [These](https://portal.azure.com/#blade/Microsoft_Azure_Billing/FreeServicesBlade) are free service you can check out for limits.
 

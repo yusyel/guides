@@ -141,17 +141,38 @@ Azure Container Registry allows you to build, store, and manage docker container
 
 
 ```bash
-az acr create --resource-group {group_name} --name {container_name} --sku Basic
+az acr create --resource-group {group_name} --name {container_reg_name} --sku Basic
 ```
 After ```--name ``` tag you **should choose unique** for docker container registry **name.** We're going to use login information for docker container repository when we push local docker container to azure docker container repository.
 
 ## 5. Login Azure container registry
 
+
 If you have successfully created the container it's time to log in to the azure docker repository.
 
-There is two to log in repository. I will try cover both.
+Before we start we need enable admin account for container registry. 
 
+```bash
+az acr update --name {container_reg_name} --admin-enabled true
+```
+Now we can use login token for docker container repository.
 
+```bash
+token=$(az acr login --name {container_reg_name} --expose-token --output tsv --query accessToken)
+```
+The return of this command also gives us little hint for docker login.
 
+```
+WARNING: You can perform manual login using the provided access token below, for example: 'docker login loginServer -u 00000000-0000-0000-0000-000000000000 -p accessToken'
+```
 
+We passed through login token to ```token``` varible.
+
+Now we can use ```token``` to docker login. 
+
+For that:
+
+```bash
+docker login {container_reg_name}.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $token
+```
 

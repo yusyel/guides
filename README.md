@@ -186,7 +186,7 @@ Now it's time push local images to azure.
 ```bash
 docker images
 ```
-This docker lists your local images. First we need tag image for azure container registry.
+This docker command lists your local images. First we need tag image for azure container registry.
 
 For that:
 

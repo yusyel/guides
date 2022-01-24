@@ -1,4 +1,4 @@
-# 1. Creating Azure Account
+## 1. Creating Azure Account
 Before you start you need Microsoft account.
 If you do not have a microsoft account, you can sign up [here](https://account.microsoft.com/account/)
 
@@ -26,7 +26,7 @@ After filling the form you need verify account with Credit or debit card. For cr
 
 
 
-# 2. Azure-Cli
+## 2. Azure-Cli
 Azure-cli azure command line based service manager tool.
 
 
@@ -175,4 +175,52 @@ For that:
 ```bash
 docker login {container_reg_name}.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $token
 ```
+
+## 6. Pushing Local Docker image to Azure
+
+Now it's time push local images to azure.
+
+```bash
+docker images
+```
+This docker lists your local images. First we need tag image for azure container registry.
+
+For that:
+
+```
+sudo docker tag {container_name} {container_reg_name}.azurecr.io/midterm:v1
+```
+<i>local container name</i> **>** <i> azure container registry name</i>
+
+Container should be exists local docker images.
+
+```bash
+docker images
+```
+Now you can see under repository column your azure container repository.
+
+
+For pushin images:
+
+```
+docker push {container_reg_name}.azurecr.io/{container_name}
+```
+
+![img8](./img/img8.png)
+
+## 7. Turning Docker Image to Azure Web Service
+
+Before we turning docker image to Web service we need ```appservice plan```
+
+Appservice is specifying web service.
+
+```
+az appservice plan create --name {appservice_name} --resource-group {group_name} --is-linux --sku FREE
+```
+
+```
+az webapp create --resource-group {group_name} --plan {appservice_name} --name {web_app_name}  --deployment-container-image-name {container_reg_name}.azurecr.io/{container_name}:v1
+```
+
+## Summary
 

@@ -215,7 +215,7 @@ docker push {container_reg_name}.azurecr.io/{container_name}
 
 Before we turning docker image to Web service we need ```appservice plan```
 
-Appservice is specifying web service.
+Appservice is specifying web service OS, Region and SKU.
 
 ```
 az appservice plan create --name {appservice_name} --resource-group {group_name} --is-linux --sku FREE

@@ -1,5 +1,5 @@
 
-## [These Guide for Machine Learning Zoomcamp](https://github.com/yusyel/mlbookcamp-code/blob/master/course-zoomcamp/README.md#5-deploying-machine-learning-models)
+## [Azure Deployment guide for Machine Learning Zoomcamp](https://github.com/yusyel/mlbookcamp-code/blob/master/course-zoomcamp/README.md#5-deploying-machine-learning-models)
 
 ## 1. Creating Azure Account
 Before you start you need Microsoft account.

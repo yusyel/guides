@@ -1,3 +1,6 @@
+
+## [These Guide for Machine Learning Zoomcamp](https://github.com/yusyel/mlbookcamp-code/blob/master/course-zoomcamp/README.md#5-deploying-machine-learning-models)
+
 ## 1. Creating Azure Account
 Before you start you need Microsoft account.
 If you do not have a microsoft account, you can sign up [here](https://account.microsoft.com/account/)
@@ -125,7 +128,7 @@ If you're using azure-cli on Windows Terminal this powershell command lists all 
 ```
 az account list-locations | Select-String "name"
 ```
-Output should be similar like above.Output should be similar like above.
+Output should be similar like above.
 
 
 ### 4.1.1 Creating Resource Group
@@ -200,7 +203,7 @@ docker images
 Now you can see under repository column your azure container repository.
 
 
-For pushin images:
+For pushing docker container:
 
 ```
 docker push {container_reg_name}.azurecr.io/{container_name}
@@ -221,6 +224,3 @@ az appservice plan create --name {appservice_name} --resource-group {group_name}
 ```
 az webapp create --resource-group {group_name} --plan {appservice_name} --name {web_app_name}  --deployment-container-image-name {container_reg_name}.azurecr.io/{container_name}:v1
 ```
-
-## Summary
-

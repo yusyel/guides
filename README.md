@@ -224,3 +224,4 @@ az appservice plan create --name {appservice_name} --resource-group {group_name}
 ```
 az webapp create --resource-group {group_name} --plan {appservice_name} --name {web_app_name}  --deployment-container-image-name {container_reg_name}.azurecr.io/{container_name}:v1
 ```
+Now your web should looks like this: {web__app_name}.azurewebsites.net

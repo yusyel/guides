@@ -214,3 +214,7 @@ git push
 After 5 minutes for building space should look like this:
 
 [Fashion Classification](https://huggingface.co/spaces/yusyel/clothing)
+
+[Fashion classification Notebook](https://github.com/yusyel/guides/blob/master/huggingface/Fashion%20classification.ipynb)
+
+[Gradio app python script]()

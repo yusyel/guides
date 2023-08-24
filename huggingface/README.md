@@ -148,11 +148,11 @@ def preprocess_image(img):
 
 And predict function. Returning class names and prediction:
 ```python
-def predict(img):
+predict(img):
     img = preprocess_image(img)
     pred = model.predict(img)
-    pred = np.squeeze(pred).astype(float)
-    print(pred)
+    pred = np.squeeze(np.exp(pred)/np.sum(np.exp(pred))).astype(float)
+    print(dict(zip(class_names, pred)))
     return dict(zip(class_names, pred))
 ```
 
@@ -175,7 +175,7 @@ demo = gr.Interface(
         ["./img/Striped_Red_Mullet.png"],
         ["./img/Trout.png"],
     ],
-    title="fish classification",
+    title="Fashion Classification",
 )
 demo.launch(server_name="0.0.0.0", server_port=7860)
 ```
@@ -198,7 +198,7 @@ requriments python library should looks like this:
 
 
 ```
-gradio==3.39.0
+gradio==3.41.0
 numpy==1.23.3
 tensorflow==2.9.1
 ```
@@ -211,3 +211,6 @@ git commit -m "first push"
 git push 
 ```
 
+After 5 minutes for building space should look like this:
+
+[Fashion Classification](https://huggingface.co/spaces/yusyel/clothing)

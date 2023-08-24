@@ -217,4 +217,4 @@ After 5 minutes for building space should look like this:
 
 [Fashion classification Notebook](https://github.com/yusyel/guides/blob/master/huggingface/Fashion%20classification.ipynb)
 
-[Gradio app python script]()
+[Gradio app python script](https://github.com/yusyel/guides/blob/master/huggingface/app.py)

@@ -217,7 +217,7 @@ Now we're ready to use best parameters.
 
 ### Early Stop
 
-Since we know our best accuracy we can use early stop to stopping training.
+Early stop useful feature when criticism metric reach saturation. Since we know our best accuracy we can use early stop to stopping training.
 
 
 ```python

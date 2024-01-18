@@ -1,5 +1,4 @@
-# Selfhosting and Sharing Open Source LLM's
-
+# Self-Hosting Large Language Models And Distributing With Cloudflare Tunnel
 Titan ML's takeoff server allows you to host open-source large language models. The cool thing about the Takeoff Server is that it comes with optimization. The Takeoff Server utilizes intake quantization by default, taking high-precision weights and carefully tuning the precision so that it can represent them with much smaller weights. This optimization enables the model to run much faster and with significantly less memory usage.[*]
 
 Cloudflare Tunnel is provides you with a secure way to connect your self hosted app without expose port or ip address.
@@ -137,7 +136,7 @@ First step is downloading model from huggingface. Then optimizing model. This is
 Expected output:
 
 ```logs
-(titan) titan@falcon:~$ docker logs Llama-2-13b-chat-hf-VVLiPdjyjyUGbTFc4o9S6N-takeoff -f
+docker logs Llama-2-13b-chat-hf-VVLiPdjyjyUGbTFc4o9S6N-takeoff -f
 INFO:     Started server process [7]
 INFO:     Waiting for application startup.
 INFO:   Taking off!

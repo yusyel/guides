@@ -1,12 +1,5 @@
-# Self-Hosting Large Language Models And Distributing With Cloudflare Tunnel
-Titan ML's takeoff server allows you to host open-source large language models. The cool thing about the Takeoff Server is that it comes with optimization. The Takeoff Server utilizes intake quantization by default, taking high-precision weights and carefully tuning the precision so that it can represent them with much smaller weights. This optimization enables the model to run much faster and with significantly less memory usage.[*]
-
-Cloudflare Tunnel is provides you with a secure way to connect your self hosted app without expose port or ip address.
-
-
-
-
-![source cloudflare](./img/cloudflare.jpg)
+# Self-Hosting Large Language Models And Sharing With Cloudflare Tunnel
+Titan ML's takeoff server allows you to host open-source large language models. The cool thing about the Takeoff Server is that it comes with optimization. The Takeoff Server utilizes intake quantization by default, taking high-precision weights and carefully tuning the precision so that it can represent them with much smaller weights. This optimization enables the model to run much faster and with significantly less memory usage.[^1]
 
 
 In this guideline I will explain how to deploy takeoff server and distribute to others with cloudflare tunnel.
@@ -183,4 +176,109 @@ Now can use http://localhost:8000/demos/chat address to interactive demos.
 
 
 ![demo](./img/demo.png)
+
+
+
+## Cloudflare Tunnel
+
+Cloudflare Tunnel is provides you with a secure way to connect your self hosted app without expose port or ip address.
+
+![source cloudflare](./img/cloudflare.jpg)
+
+
+Before creating tunnel we need add public domain to cloudflare. Cloudflare dashboard already starts with **Website** tab. Click **Add a Site** button. And add your domain. After that you need to change DNS servers. If you bought your domain on godaddy. Follow these steps:
+
+
+https://www.godaddy.com/community/Managing-Domains/Add-Cloudflare-nameservers-to-my-domain/m-p/31693
+
+
+For creating your first Cloudflare tunnel, follow these steps:
+
+On cloudflare dashboard click **Zero Trust** then click **Access**. After that click **Tunnels**. Lastly click **Create a tunnel**
+
+Give a name for tunnel and save tunnel.
+
+For environment to use we have several options. Easiest way is of course docker.
+
+click docker and copy **docker run** with **token**.
+
+
+
+![docker](./img/docker.png)
+
+
+To run docker container with attach mode: Add **-d** flag after **run**.
+
+When the tunnel connects to the Cloudflare server, you will see that the **Status** is **Connected**
+
+click **Next**.
+
+For hosting app we have two option. With the **public hostname**, you can share the app using your own domain address. With the **private network**, only certain users using the Warp client can access.
+
+More info about options:
+
+https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/
+
+https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/routing-to-tunnel/
+
+
+Click Public Hostname then click **add a public hostname** button.
+
+Expected Page:
+
+![page](./img/cloudflare2.png)
+
+
+Your domain should be listed in the **Domain** dropdown menu. Select domain and add subdomain if you want to use.
+
+For service:
+
+Select: **"HTTP"**
+
+For **URL** we need Private ip address.
+
+for finding local ip address:
+
+```bash
+hostname -I | awk '{print $1}'
+```
+should output local address.
+
+Takeoff server is using port **8000**.
+
+URL is: `local_ip:8000`
+
+Then click **Save hostname**.
+
+Now, we are ready to configure access policies. Click **Application** then **Add an application** button. Select **Self-hosted**.
+
+![page2](./img/cloudflare3.png)
+
+Give application name then select session duration and use same domain and subdomain address. Leave the rest of the configuration as default.
+
+The next page is about specifying who can access the app.
+
+![](./img/cloudflare4.png)
+
+Give a name policy and select **Emails**. Enter the email address of the person you wish to authorize for access. Then click next and leave the rest of the configuration as default. Click **add application**.
+
+Now, it is ready to use.
+
+When you visit your domain, you are automatically redirected to the `[cloudflare_team_name].cloudflareaccess.com` login page, where you should enter the email address which is specified in the access policy, Cloudflare will send you a PIN to use for login.
+
+Now, the self-hosted Llama2 app is accessible to others.
+
+
+
+Titan Takeoff demo is on [https://datatalks.club/](https://datatalks.club)'s Open-Source Spotlight.
+
+[^1]: https://www.youtube.com/watch?v=aIRP5yW5E1E
+
+Takeoff-community github page and docs.
+
+https://github.com/titanml/takeoff-community
+
+https://docs.titanml.co/
+
+
 
